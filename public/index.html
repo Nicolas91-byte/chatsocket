@@ -101,35 +101,35 @@
             margin-top: 5px;
         }
         
-        </style>
+    </style>
 </head>
 <body>
     <div id="container" role="main">
         <header>
-            <h1 id="mainHeading">Chat con Socket.IO</h1>
+            <h1>Chat con Socket.IO</h1>
         </header>
 
         <nav>
             <section id="usernameForm" aria-live="polite">
-                <label for="usernameInput" id="usernameLabel">Ingresa tu nombre de usuario:</label>
-                <input type="text" id="usernameInput" autocomplete="off" aria-labelledby="usernameLabel" />
-                <button id="setUsernameButton" aria-describedby="usernameError">Ingresar al Chat</button>
-                <p id="usernameError" style="color: red;" role="alert" aria-live="assertive"></p>
+                <label for="usernameInput">Ingresa tu nombre de usuario:</label>
+                <input type="text" id="usernameInput" autocomplete="off" />
+                <button id="setUsernameButton">Ingresar al Chat</button>
+                <p id="usernameError" style="color: red;" role="alert"></p>
             </section>
         </nav>
 
         <main>
             <section id="chat" style="display:none;">
                 <div class="cabecera">Usuarios Conectados</div>
-                <ul id="usuariosConectados" aria-live="polite" aria-labelledby="mainHeading"></ul>
+                <ul id="usuariosConectados" aria-live="polite"></ul>
                 <div class="cabecera">Zona de Chat</div>
-                <ul id="messages" aria-live="polite" aria-labelledby="mainHeading"></ul>
+                <ul id="messages" aria-live="polite"></ul>
 
-                <form id="form" aria-labelledby="mainHeading">
-                    <label for="input" id="inputLabel">Escribe un mensaje:</label>
-                    <input id="input" autocomplete="off" placeholder="Escribe un mensaje..." aria-labelledby="inputLabel" />
-                    <label for="destinatario" id="destinatarioLabel">Nombre del destinatario (opcional):</label>
-                    <input id="destinatario" placeholder="Nombre del destinatario (opcional)" aria-labelledby="destinatarioLabel" />
+                <form id="form">
+                    <label for="input">Escribe un mensaje:</label>
+                    <input id="input" autocomplete="off" placeholder="Escribe un mensaje..." />
+                    <label for="destinatario">Nombre del destinatario (opcional):</label>
+                    <input id="destinatario" placeholder="Nombre del destinatario (opcional)" />
                     <button>Enviar</button>
                 </form>
             </section>
