@@ -40,8 +40,8 @@ input, button {
     border-radius: 4px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
-    width: calc(100% - 22px); /* Ajustar el ancho para incluir el relleno y el borde */
-    box-sizing: border-box; /* Para incluir el relleno y el borde en el ancho total */
+    width: calc(100% - 22px);
+    box-sizing: border-box;
 }
 
 button {
@@ -74,35 +74,33 @@ button:hover {
 
 #form {
     display: flex;
-    flex-wrap: wrap; /* Para que los elementos se envuelvan en pantallas más pequeñas */
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#form label {
+    margin-bottom: 5px;
 }
 
 #form input {
-    flex: 1;
     margin-bottom: 10px;
-}
-
-#form #destinatario {
-    flex: 1;
-    margin-bottom: 10px; /* Puedes ajustar según tu preferencia */
-    padding: 10px; /* Añadir relleno para mejorar la apariencia */
-    width: calc(100% - 22px); /* Ajustar el ancho para incluir el relleno y el borde */
-    box-sizing: border-box; /* Para incluir el relleno y el borde en el ancho total */
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: calc(100% - 22px);
+    box-sizing: border-box;
 }
 
 #form button {
-    flex: 1;
-    width: auto; /* Restablecer el ancho automático para el botón */
+    width: auto;
 }
 
 /* Añadido para mejorar la accesibilidad */
-/* Estilos para indicar elementos enfocados y resaltar su importancia */
 *:focus {
     outline: 2px solid #007bff;
     outline-offset: 2px;
 }
 
-/* Estilos para texto de error */
 .error-message {
     color: red;
     font-weight: bold;
@@ -111,14 +109,15 @@ button:hover {
 
 @media only screen and (max-width: 767px) {
     #form label[for="destinatario"] {
-        display: flex;
+        display: block;
         margin-bottom: 5px;
     }
 
     #form #destinatario {
-        margin-bottom: 15px; /* Aumentar el espacio para el destinatario en dispositivos móviles */
+        margin-bottom: 10px;
     }
 }
+
     </style>
 </head>
 <body>
