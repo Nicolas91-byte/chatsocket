@@ -1,0 +1,23 @@
+{
+  "name": "socketprivados",
+  "app-name": "myapp",
+  "package-name": "mypkg",
+  "icon": "./public/icon.png",
+  "permission": [
+    "android.permission.INTERNET"
+  ],
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "androidjs": "^2.0.6",
+    "androidjs-builder": "^1.0.2",
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  }
+}
