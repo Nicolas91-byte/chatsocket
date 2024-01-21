@@ -91,8 +91,7 @@ button:hover {
 
 #form button {
     flex: 1;
-    width: calc(100% - 22px); /* Ajustar el ancho para incluir el relleno y el borde */
-    box-sizing: border-box; /* Para incluir el relleno y el borde en el ancho total */
+    width: auto; /* Restablecer el ancho automático para el botón */
 }
 
 /* Añadido para mejorar la accesibilidad */
@@ -107,13 +106,6 @@ button:hover {
     color: red;
     font-weight: bold;
     margin-top: 5px;
-}
-
-/* Estilos adicionales para dispositivos móviles */
-@media only screen and (max-width: 600px) {
-    #form input, #form #destinatario, #form button {
-        width: 100%; /* Ajustar el ancho al 100% en pantallas más pequeñas */
-    }
 }
 
     </style>
