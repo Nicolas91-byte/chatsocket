@@ -4,34 +4,136 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat con Socket.IO</title>
+    <style>
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        
+        #container {
+            width: 80%;
+            max-width: 800px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        #usernameForm, #chat {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            font-weight: bold;
+            color: #333333;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        input, button {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            width: calc(100% - 22px); /* Ajustar el ancho para incluir el relleno y el borde */
+            box-sizing: border-box; /* Para incluir el relleno y el borde en el ancho total */
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        #usuariosConectados, #messages {
+            list-style: none;
+            padding: 0;
+            background-color: #e9e9e9;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        #usuariosConectados li, #messages li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        #usuariosConectados li:last-child, #messages li:last-child {
+            border-bottom: none;
+        }
+        
+        #form {
+            display: flex;
+            flex-wrap: wrap; /* Para que los elementos se envuelvan en pantallas más pequeñas */
+        }
+        
+        #form input {
+            flex: 1;
+            margin-bottom: 10px;
+        }
+        
+        #form button {
+            flex: 1;
+            width: auto; /* Restablecer el ancho automático para el botón */
+        }
+        
+        /* Añadido para mejorar la accesibilidad */
+        /* Estilos para indicar elementos enfocados y resaltar su importancia */
+        *:focus {
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
+        }
+        
+        /* Estilos para texto de error */
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        </style>
 </head>
 <body>
     <div id="container" role="main">
         <header>
-            <h1>Chat con Socket.IO</h1>
+            <h1 id="mainHeading">Chat con Socket.IO</h1>
         </header>
 
-        <section id="usernameForm" aria-live="polite">
-            <label for="usernameInput">Ingresa tu nombre de usuario:</label>
-            <input type="text" id="usernameInput" autocomplete="off" aria-labelledby="usernameLabel" />
-            <button id="setUsernameButton" aria-describedby="usernameError">Ingresar al Chat</button>
-            <p id="usernameError" style="color: red;" role="alert"></p>
-        </section>
+        <nav>
+            <section id="usernameForm" aria-live="polite">
+                <label for="usernameInput" id="usernameLabel">Ingresa tu nombre de usuario:</label>
+                <input type="text" id="usernameInput" autocomplete="off" aria-labelledby="usernameLabel" />
+                <button id="setUsernameButton" aria-describedby="usernameError">Ingresar al Chat</button>
+                <p id="usernameError" style="color: red;" role="alert" aria-live="assertive"></p>
+            </section>
+        </nav>
 
-        <section id="chat" style="display:none;">
-            <div class="cabecera">Usuarios Conectados</div>
-            <ul id="usuariosConectados"></ul>
-            <div class="cabecera">Zona de Chat</div>
-            <ul id="messages" aria-live="polite"></ul>
+        <main>
+            <section id="chat" style="display:none;">
+                <div class="cabecera">Usuarios Conectados</div>
+                <ul id="usuariosConectados" aria-live="polite" aria-labelledby="mainHeading"></ul>
+                <div class="cabecera">Zona de Chat</div>
+                <ul id="messages" aria-live="polite" aria-labelledby="mainHeading"></ul>
 
-            <form id="form">
-                <label for="input">Escribe un mensaje:</label>
-                <input id="input" autocomplete="off" placeholder="Escribe un mensaje..." aria-labelledby="inputLabel" />
-                <label for="destinatario">Nombre del destinatario (opcional):</label>
-                <input id="destinatario" placeholder="Nombre del destinatario (opcional)" aria-labelledby="destinatarioLabel" />
-                <button>Enviar</button>
-            </form>
-        </section>
+                <form id="form" aria-labelledby="mainHeading">
+                    <label for="input" id="inputLabel">Escribe un mensaje:</label>
+                    <input id="input" autocomplete="off" placeholder="Escribe un mensaje..." aria-labelledby="inputLabel" />
+                    <label for="destinatario" id="destinatarioLabel">Nombre del destinatario (opcional):</label>
+                    <input id="destinatario" placeholder="Nombre del destinatario (opcional)" aria-labelledby="destinatarioLabel" />
+                    <button>Enviar</button>
+                </form>
+            </section>
+        </main>
 
         <footer>
             <p>© 2024 Chat con Socket.IO. Todos los derechos reservados.</p>
